@@ -9,6 +9,21 @@ class OutBoarding extends StatefulWidget {
 }
 
 class _OutBoardingState extends State<OutBoarding> {
+  late PageController _pageController;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +33,30 @@ class _OutBoardingState extends State<OutBoarding> {
           children: [
             Align(
               alignment: AlignmentDirectional.topEnd,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'SKIP',
+              child: Visibility(
+                visible: _currentPage < 2,
+                // replacement: TextButton(
+                //   onPressed: (){},
+                //   child:Text('START'),
+                // ),
+                child: TextButton(
+                  onPressed: () {
+                    _pageController.animateToPage(2,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.easeIn);
+                  },
+                  child: const Text('SKIP'),
                 ),
               ),
             ),
             Expanded(
               child: PageView(
+                onPageChanged: (int page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+                controller: _pageController,
                 //  scrollDirection:Axis.horizontal,
                 children: const [
                   OutBoardingContent(
