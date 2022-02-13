@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/Out_Boarding_Content.dart';
+import '../widgets/Out_boarding_indicator.dart';
 
 class OutBoarding extends StatefulWidget {
   const OutBoarding({Key? key}) : super(key: key);
@@ -76,6 +77,42 @@ class _OutBoardingState extends State<OutBoarding> {
                   ),
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutBoardingIndicator(
+                  margin: 14,
+                  selected: _currentPage == 0,
+                ),
+                OutBoardingIndicator(
+                  margin: 14,
+                  selected: _currentPage == 1,
+                ),
+                OutBoardingIndicator(
+                  selected: _currentPage == 2,
+                ),
+              ],
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children:  [
+            //     TabPageSelectorIndicator(
+            //         backgroundColor: _currentPage==0? Colors.blue:Colors.white,
+            //         borderColor: Colors.black,
+            //         size: 15),
+            //     TabPageSelectorIndicator(
+            //         backgroundColor: _currentPage==1? Colors.blue:Colors.white,
+            //         borderColor: Colors.black,
+            //         size: 15),
+            //     TabPageSelectorIndicator(
+            //         backgroundColor: _currentPage==2? Colors.blue:Colors.white,
+            //         borderColor: Colors.black,
+            //         size: 15),
+            //   ],
+            // ),
+            const SizedBox(
+              height: 30,
             ),
           ],
         ),
