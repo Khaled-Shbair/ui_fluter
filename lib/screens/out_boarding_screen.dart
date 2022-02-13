@@ -94,6 +94,38 @@ class _OutBoardingState extends State<OutBoarding> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Visibility(
+                  visible: _currentPage != 0,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
+                  child: IconButton(
+                    onPressed: () {
+                      _pageController.previousPage(
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeInCubic);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _pageController.nextPage(
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.easeInCirc);
+                  },
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  color:
+                      _currentPage == 2 ? Colors.grey.shade200 : Colors.black,
+                ),
+              ],
+            ),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.center,
             //   children:  [
