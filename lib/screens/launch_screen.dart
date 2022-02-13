@@ -13,7 +13,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(const Duration(seconds: 3),
-          () { Navigator.pushReplacementNamed( context, '/outBoarding',); },
+          () { Navigator.pushReplacementNamed( context, '/OutBoardingScreen',); },
     );
   }
 

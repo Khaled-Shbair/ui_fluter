@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ui_fluter/screens/launch_screen.dart';
-import 'package:ui_fluter/screens/login_screen.dart';
-import 'package:ui_fluter/screens/out_boarding_screen.dart';
+import 'package:ui_flutter/screens/launch_screen.dart';
+import 'package:ui_flutter/screens/login_screen.dart';
+import 'package:ui_flutter/screens/out_boarding_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/launchScreen',
+      initialRoute: '/LaunchScreen',
       routes: {
         '/LaunchScreen': (context) => const LaunchScreen(),
         '/LoginScreen': (context) => const LoginScreen(),
