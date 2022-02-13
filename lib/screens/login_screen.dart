@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class loginScreen extends StatefulWidget {
-  const loginScreen({Key? key}) : super(key: key);
+class LaunchScreen extends StatefulWidget {
+  const LaunchScreen({Key? key}) : super(key: key);
 
   @override
-  _loginScreenState createState() => _loginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _loginScreenState extends State<loginScreen> {
+class _LoginScreenState extends State<LaunchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +16,7 @@ class _loginScreenState extends State<loginScreen> {
           'Login',
         ),
       ),
-      body: Container(
-
-      ),
+      body: Container(),
     );
   }
 }

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
-class launchScreen extends StatefulWidget {
-  const launchScreen({Key? key}) : super(key: key);
+class LaunchScreen extends StatefulWidget {
+  const LaunchScreen({Key? key}) : super(key: key);
 
   @override
-  _launchScreenState createState() => _launchScreenState();
+  _LaunchScreenState createState() => _LaunchScreenState();
 }
 
-class _launchScreenState extends State<launchScreen> {
+class _LaunchScreenState extends State<LaunchScreen> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(
-      const Duration(
-        seconds: 3,
-      ),
+    Future.delayed(const Duration(seconds: 3),
+          () { Navigator.pushReplacementNamed( context, '/outBoarding',); },
     );
   }
 
