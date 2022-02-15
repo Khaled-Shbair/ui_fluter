@@ -36,10 +36,12 @@ class _OutBoardingState extends State<OutBoarding> {
               alignment: AlignmentDirectional.topEnd,
               child: Visibility(
                 visible: _currentPage < 2,
-                // replacement: TextButton(
-                //   onPressed: (){},
-                //   child:Text('START'),
-                // ),
+                replacement: TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/LoginScreen');
+                  },
+                  child: const Text('START'),
+                ),
                 child: TextButton(
                   onPressed: () {
                     _pageController.animateToPage(2,
