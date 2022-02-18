@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,21 +10,62 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _textEditingControllerEmail;
+  late TextEditingController _textEditingControllerPassWord;
+  late TapGestureRecognizer _tapGestureRecognizer;
+
   String? _errorEmailText;
+  String? _errorPassWordText;
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingControllerEmail = TextEditingController();
+    _textEditingControllerPassWord = TextEditingController();
+    _tapGestureRecognizer = TapGestureRecognizer();
+    _tapGestureRecognizer.onTap = _navigatorToRegister;
+  }
+
+  void _navigatorToRegister() {
+    Navigator.pushNamed(context, '/RegisterScreen');
+  }
+
+  @override
+  void dispose() {
+    _tapGestureRecognizer.dispose();
+    _textEditingControllerEmail.dispose();
+    _textEditingControllerPassWord.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           'Login',
         ),
       ),
       body: Padding(
-        padding:
-            const EdgeInsetsDirectional.only(start: 10, end: 10, bottom: 15),
+        padding: const EdgeInsetsDirectional.only(start: 20, end: 20, top: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              'Welcome Back...',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Enter Eamil & PassWord',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
             const SizedBox(height: 20),
             TextField(
               keyboardType: TextInputType.emailAddress,
@@ -71,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 helperStyle: const TextStyle(color: Colors.black45),
                 helperMaxLines: 1,
                 prefixIcon: const Icon(Icons.email),
-              //  prefixText: 'admin@',
+                //  prefixText: 'admin@',
                 // prefix: Text('admin1@'),
                 suffixIcon: const Icon(Icons.check_circle),
                 fillColor: Colors.grey.shade200,
@@ -110,6 +152,25 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 20),
+            TextField(
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
+              cursorColor: Colors.yellow,
+              decoration: InputDecoration(
+                errorText: _errorPassWordText,
+                fillColor: Colors.grey.shade300,
+                filled: true,
+                prefixIcon: const Icon(Icons.lock),
+                labelText: 'PassWord',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: const BorderSide(
+                    color: Colors.transparent,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 _performLogin();
@@ -119,6 +180,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  text: 'Dont\'t have an accont ? ',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                  children: [
+                    TextSpan(
+                      recognizer: _tapGestureRecognizer,
+                      text: 'Create Now!',
+                      style: const TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -135,7 +218,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   bool _checkData() {
-    if (_textEditingControllerEmail.text.isNotEmpty) {
+    if (_textEditingControllerEmail.text.isNotEmpty &&
+        _textEditingControllerPassWord.text.isNotEmpty) {
+      controlErrorText();
       return true;
     } else {
       controlErrorText();
@@ -154,8 +239,21 @@ class _LoginScreenState extends State<LoginScreen> {
     initState() {
       _errorEmailText =
           _textEditingControllerEmail.text.isEmpty ? _errorEmailText : null;
+      _errorPassWordText = _textEditingControllerPassWord.text.isEmpty
+          ? _errorPassWordText
+          : null;
     }
   }
 
-  void _login() {}
+  void _login() {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          const SnackBar(
+            content: Text('Loing is successflly'),
+            behavior: SnackBarBehavior.floating,
+            duration: Duration(seconds: 2),
+          ),
+        ).closed.then((value) =>
+        Navigator.pushReplacementNamed(context, '/RegisterScreen'));
+  }
 }

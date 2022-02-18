@@ -52,6 +52,7 @@ class _OutBoardingState extends State<OutBoarding> {
                 ),
               ),
             ),
+
             Expanded(
               child: PageView(
                 onPageChanged: (int page) {
@@ -80,6 +81,7 @@ class _OutBoardingState extends State<OutBoarding> {
                 ],
               ),
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -99,6 +101,7 @@ class _OutBoardingState extends State<OutBoarding> {
             const SizedBox(
               height: 30,
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -145,9 +148,7 @@ class _OutBoardingState extends State<OutBoarding> {
             //         size: 15),
             //   ],
             // ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
           ],
         ),
       ),
