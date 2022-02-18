@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_flutter/screens/launch_screen.dart';
 import 'package:ui_flutter/screens/login_screen.dart';
 import 'package:ui_flutter/screens/out_boarding_screen.dart';
+import 'package:ui_flutter/screens/products_screen.dart';
 import 'package:ui_flutter/screens/register_screen.dart';
 
 void main() => runApp(const MyApp());
@@ -14,12 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //initialRoute: '/LaunchScreen',
-      initialRoute: '/RegisterScreen',
+      initialRoute: '/ProductsScreen',
       routes: {
         '/LaunchScreen': (context) => const LaunchScreen(),
         '/LoginScreen': (context) => const LoginScreen(),
         '/OutBoardingScreen': (context) => const OutBoarding(),
         '/RegisterScreen': (context) => const RegisterScreen(),
+        '/ProductsScreen': (context) => const ProductsScreen(),
       },
     );
   }
