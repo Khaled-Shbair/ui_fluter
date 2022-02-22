@@ -29,6 +29,44 @@ class _MainScreenState extends State<MainScreen> {
         title: Text(_bnItems[_currentIndex].title),
       ),
       body: _bnItems[_currentIndex].widget,
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(),
+              currentAccountPictureSize: Size(80, 80),
+              // otherAccountsPictures: [
+              //   CircleAvatar(),
+              //   CircleAvatar(),
+              //   CircleAvatar(),
+              // ],
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              accountName: Text('Flutter'),
+              accountEmail: Text('dlom2020@hotmail.com'),
+            ),
+            ListTile(
+              title: const Text('FQAS'),
+              leading: const Icon(Icons.login),
+              onTap: () {
+                Navigator.pop(context);
+                Future.delayed(const Duration(seconds: 1), () {
+                  Navigator.pushNamed(context,  '/FaqsScreen');
+                });
+              },
+            ),
+            // DrawerHeader(
+            //   padding: EdgeInsetsDirectional.zero,
+            //   child: Container(color: Colors.blue),
+            // ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) {
           setState(() {

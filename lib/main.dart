@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter/screens/faqs_Screen.dart';
 import 'package:ui_flutter/screens/launch_screen.dart';
 import 'package:ui_flutter/screens/login_screen.dart';
 import 'package:ui_flutter/screens/main_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/SettingsScreen',
+      initialRoute: '/MainScreen',
       routes: {
         '/LaunchScreen': (context) => const LaunchScreen(),
         '/LoginScreen': (context) => const LoginScreen(),
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/ProductsScreen': (context) => const ProductsScreen(),
         '/MainScreen': (context) => const MainScreen(),
         '/SettingsScreen': (context) => const SettingsScreen(),
+        '/FaqsScreen': (context) => const FaqsScreen(),
       },
     );
   }
