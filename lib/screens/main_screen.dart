@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_flutter/screens/products_screen.dart';
 import 'package:ui_flutter/screens/register_screen.dart';
@@ -56,8 +57,15 @@ class _MainScreenState extends State<MainScreen> {
               onTap: () {
                 Navigator.pop(context);
                 Future.delayed(const Duration(seconds: 1), () {
-                  Navigator.pushNamed(context,  '/FaqsScreen');
+                  Navigator.pushNamed(context, '/FaqsScreen');
                 });
+              },
+            ),
+            ListTile(
+              title: const Text('LogOut'),
+              leading: const Icon(Icons.login),
+              onTap: () {
+                _logoutInformation();
               },
             ),
             // DrawerHeader(
@@ -110,6 +118,74 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  void _logoutInformation() {
+    showDialog(
+      barrierDismissible: false,
+      //barrierColor: Colors.green,
+      context: context,
+      builder: (context) {
+        if (Platform.isAndroid) {
+          return AlertDialog(
+            //actionsAlignment: MainAxisAlignment.start,
+            backgroundColor: Colors.red,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(
+                width: 2,
+                color: Colors.yellow,
+              ),
+            ),
+            title: const Text('LogOut'),
+            content: const Text('Are you sure'),
+            //actionsOverflowButtonSpacing: 20,
+            //   actionsOverflowDirection: VerticalDirection.up,
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Text('yes1'),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Text('No'),
+              ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Text('yes'),
+              // ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Text('No'),
+              // ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Text('yes'),
+              // ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Text('No2'),
+              // ),
+            ],
+          );
+        } else {
+          return CupertinoAlertDialog(
+            title: const Text('LogOut'),
+            content: const Text('Are you sure'),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Text('yes'),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Text('No'),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }

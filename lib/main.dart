@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_flutter/screens/about_screen.dart';
 import 'package:ui_flutter/screens/faqs_Screen.dart';
 import 'package:ui_flutter/screens/launch_screen.dart';
 import 'package:ui_flutter/screens/login_screen.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/MainScreen': (context) => const MainScreen(),
         '/SettingsScreen': (context) => const SettingsScreen(),
         '/FaqsScreen': (context) => const FaqsScreen(),
+        '/AboutScreen': (context) => const AboutScreen(),
       },
     );
   }
